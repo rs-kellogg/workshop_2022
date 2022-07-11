@@ -1,1 +1,5 @@
 Session One (Monday, July 11) - Reproducibility Principles; Basics of Using KLC, Notebooks, and git
+Introduce the instructors from Research Support
+Describe goals for the 6 sessions of "Data Skills"
+Today, goal #1: Get yourself familiar with KLC, the filesystem, opening files, running programs...
+Goal #2: Think about (and discuss) a framework for thinking about replicability of your work.
