@@ -1,1 +1,10 @@
 Session Two (Wednesday, July 13) - Validating Data, Regular Expressions
+Big idea: We all have IMPLICIT assumptions about the data we use.
+You should articulate those as EXPLICIT assumptions, which you can test.
+
+Useful tool: Regular expressions to define generalizable patterns in text.
+Can be used to extract information from strings by testing for a pattern match
+OR
+by using pattern substitution, rearrange / reformat problematic strings.
+
+You can use sites like regex101.com for quick visualization of regex patterns.
