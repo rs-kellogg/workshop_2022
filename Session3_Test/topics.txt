@@ -1,1 +1,6 @@
-Session Three (Friday, July 15) – Writing Resilient Code, Testing, Abstraction
+Session Three (Friday, July 15)
+
+1. Creating Environments
+2. Writing Clean Code
+3. Handling Errors and Exceptions
+4. Writing Tests
