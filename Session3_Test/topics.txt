@@ -5,4 +5,5 @@ Session Three (Friday, July 15)
 3. Handling Errors and Exceptions
 4. Writing Tests
 
+git clone https://github.com/rs-kellogg/workshop_2022.git
 git clone https://github.com/rs-kellogg/edgar2data.git
