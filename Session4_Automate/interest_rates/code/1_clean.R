@@ -52,7 +52,7 @@ filenames
 # combine datasets
 ir <- data.frame()
 for (filename in filenames){
-  ir_add <- read.table(filename, header = TRUE, sep = ",", quote = "\"", comment.char = "")
+  ir_add <- read.table(filename, header = FALSE, sep = ",", quote = "\"", comment.char = "")
   ir <- rbind(ir, ir_add)
 }
 rm(ir_add, filename, filenames)
@@ -67,7 +67,7 @@ ir <- ir[ir$Month != "Month",]
 
 # check all prime rates for errors at once
 class(ir$Prime_Rate)
-ir$Prime_Rate <- as.numeric(ir$Prime_Rate)
+ir$Prime_Rate <- as.numeric(as.character(ir$Prime_Rate))
 ir$Prime_Rate <- ifelse(((lead(ir$Prime_Rate)/ir$Prime_Rate)-1) > 1, 
                          ir$Prime_Rate*10,
                          ir$Prime_Rate)
