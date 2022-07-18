@@ -26,6 +26,7 @@ ir2000 <- read.csv("ir2000.csv", encoding="UTF-8", header=TRUE)
 
 # Change one Value - The interest rate in April 2021 is off by a decimal
 print(ir2000[11,4])
+ir2000$Prime_Rate <- as.numeric(ir2000$Prime_Rate)
 ir2000[11,4] <- 7.8
 
 # Remove an Extra Header Row
