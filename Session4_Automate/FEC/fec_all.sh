@@ -11,7 +11,7 @@ module load python/anaconda3.6
 module load R/4.0.3
 
 # Run python script
-python 1_fec_extract.py
+python 1_fec_extract.py --start=2018 --end=2020
 
 # only run next step if file exists
 {
