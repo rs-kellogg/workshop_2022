@@ -57,6 +57,10 @@ for (filename in filenames){
 }
 rm(ir_add, filename, filenames)
 
+# add header row
+names(ir) <- as.vector(t(ir)[1,])
+
+
 # Remove all rows with header values
 ir <- ir[ir$Month != "Month",] 
 
