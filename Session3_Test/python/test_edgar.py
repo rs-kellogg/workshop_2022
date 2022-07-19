@@ -3,6 +3,10 @@ from edgar.forms.secdoc import Document
 
 
 def test_form3():
+    """
+    Test Form 3
+    :return:
+    """
     # input data
     file = Path("form3.txt")
 
@@ -15,15 +19,16 @@ def test_form3():
 
 
 def test_file4():
-    # input data
-    file = Path("form4.txt")
-
-    # tested unit
-    doc = Document(file)
-
-    # assertion
+    """
+    Test Form4
+    :return:
+    """
     # ADD CODE HERE
 
 
 def test_file5():
+    """
+    Test Form5
+    :return:
+    """
     # ADD CODE HERE
