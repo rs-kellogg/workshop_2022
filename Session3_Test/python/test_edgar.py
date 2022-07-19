@@ -5,13 +5,12 @@ from edgar.forms.secdoc import Document
 def test_form3():
     """
     Test Form 3
-    :return:
     """
     # input data
     file = Path("form3.txt")
 
     # tested unit
-    doc = Document(file1)
+    doc = Document(file)
 
     # assertion
     print(doc.accession_num)
@@ -21,7 +20,6 @@ def test_form3():
 def test_file4():
     """
     Test Form4
-    :return:
     """
     # ADD CODE HERE
 
@@ -29,6 +27,5 @@ def test_file4():
 def test_file5():
     """
     Test Form5
-    :return:
     """
     # ADD CODE HERE
