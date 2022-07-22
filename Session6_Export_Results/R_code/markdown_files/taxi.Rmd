@@ -1,0 +1,101 @@
+---
+title: "Are Taxi Rides Faster on Sunny Days?"
+author: "Your Name"
+date: "7/22/2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, out.extra="")
+```
+
+## R Markdown Installation
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+To install R Markdown, you will need to run the following install packages lines and load library lines:
+
+```{r packages, message=FALSE, warning=FALSE}
+# install packages
+#install.packages('rmarkdown')
+
+# load packages
+library(rmarkdown)
+
+# load additional packages
+library(dplyr)
+library(plyr)
+library(tidyr)
+library(ggplot2)
+library(vtable) 
+library(stargazer) 
+```
+
+## Including Code Chunks and Results
+
+You can embed an R code chunk in the space below.  Note that this line will show you both the R command you used and the results.  
+
+```{r taxi}
+# set working environment
+setwd("~/workshop_2022/Session6_Exporting_Results/data")
+
+# read in the dataframe
+taxi <- read.csv(file="taxi_backup.csv", header=TRUE, sep=",")
+
+# Separate Pickup_DateTime into Two Variables for Date and Time
+taxi <- subset(taxi, taxi$trip_time_in_secs > 0) 
+names(taxi)[4] <- "pickup"
+names(taxi)[5] <- "dropoff"
+taxi <- separate(taxi, pickup, into = c("pickup_date", "pickup_time"), sep = " ")
+taxi <- separate(taxi, dropoff, into = c("dropoff_date", "dropoff_time"), sep = " ")
+
+# Create a miles per hour variable
+taxi$trip_MPH <- taxi$trip_distance/((taxi$trip_time_in_secs/60)/60)
+taxi <- subset(taxi, taxi$trip_MPH <75 & taxi$passenger_count < 5)
+
+# Merge Taxi data with Weather Data
+weather <- data.frame(pickup_date=c("2013-05-20", "2013-06-20"), 
+                      Condition=c('sunny', 'cloudy/rain'))
+taxi <- join(taxi, weather, by="pickup_date", type="left", match="all")
+
+```
+
+## Embedding the results of a R code within text 
+
+R markdown also allows you to embed the results of some R code within your text. For instance you can show that the mean of taxi speed from the dataset is `r round(mean(taxi$trip_MPH),2)` miles per second.
+
+
+## Including Formatted Tables
+If you want to include tables from your regression results, you can use the `stargazer` package as shown below:
+
+```{r regs, echo=FALSE}
+taxi.mod <- lm(trip_MPH ~ passenger_count + factor(Condition), data=taxi)
+```
+
+First, we loaded the package and dataset and ran the regression models.  Below, we create a table for results.
+
+```{r, results='asis'}
+stargazer(taxi.mod, type='latex', title="Taxi Regression", out="taxi_reg.tex")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plots, echo=FALSE, fig.align='center', fig.margin=TRUE}
+taxi.predict <- cbind(taxi, predict(taxi.mod, interval = 'confidence'))
+
+ggplot(taxi.predict, aes(y=trip_MPH, x= passenger_count, color=Condition)) +
+  geom_point()+
+  geom_line(aes(passenger_count,fit))+
+  geom_ribbon(aes(ymin=lwr, ymax=upr), alpha=0.3)+
+  xlab("Passengers") + ylab("Trip MPH")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.  So in this case, the plot or R results printed, but not the code command.
+
+# Creating a PDF or HTML document. 
+Finally, when you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document
+
