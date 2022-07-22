@@ -1,0 +1,139 @@
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage[parfill]{parskip}
+\usepackage{url}
+\usepackage{dcolumn}                                  
+\usepackage{epstopdf}
+\usepackage{fullpage}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{changepage}
+\usepackage{graphicx}
+\usepackage{booktabs,caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\tab}{\hspace*{0.5 in}}
+\newcommand{\halftab}{\hspace*{0.25 in}}
+\setlength{\parskip}{2 mm}
+\setlength{\parindent}{1cm}
+
+
+\linespread{1.5}
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+
+\begin{document} 
+
+\begin{titlepage}
+\begin{center}
+
+\textsc{\LARGE RESEARCH SUPPORT DRAFT}\\[0.5cm] 
+
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries \emph{ \LaTeX Training}  \\[0.4cm] }
+{ \Large Are Taxi Rides Faster on Sunny Days?}
+\HRule \\[1.5cm]
+
+% Author
+\begin{minipage}{0.75\textwidth}
+\begin{center} 
+\LARGE {Your Name}\\
+\LARGE Kellogg School of Management\\
+\LARGE \today
+\end{center}
+\end{minipage}
+
+\vfill
+
+{\bf ABSTRACT:}
+\begin{flushleft}
+This study tests whether taxi rides are faster on sunny days using a novel dataset of New York City Taxi Rides in 2013. While we would assume that most people drive faster when the weather is nice outside, why not confirm by comparing the speed of taxi rides on sunny days versus rainy days?.  Based on a non-representative sample from two months in the summer, we can tentatively confirm our theory. \footnote{\emph{Paper prepared as an example file during a Research Support Workshop, July 22, 2022}.}  
+
+\end{flushleft}
+
+\vfill
+
+
+\end{center}
+\end{titlepage}
+
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\section*{1. Introduction}
+
+We will test whether taxi rides are faster on sunny days vs. rainy days using two days worth of taxi ride data from a New York City taxi dataset in 2013. 
+
+\section*{2. Taxi Rides faster in Nice Weather}
+
+According to Johnson et al. (2022) common knowledge says that taxi rides should be faster on sunny days!  But when dealing with a non-representative sample, who's to say what we find?!
+
+\begin{itemize}
+\item[] \emph{{\bf Hypothesis 1}: Taxi rides are faster in sunny weather versus rainy weather.} 
+\end{itemize}
+
+\section*{Data Measurement and Methodology}
+
+ \subsection*{\emph{Dataset}}
+Here are the descriptive stats from our dataset. 
+
+\begin{center}
+%\input{~/workshop_2022/Session6_Export_Results/R_code/latex_files/taxi_summary.tex}
+%\input{~/workshop_2022/Session6_Export_Results/python_code/latex_files/taxi_summary.tex}
+\input{~/workshop_2022/Session6_Export_Results/stata_code/latex_files/taxi_summary.tex}
+\end{center}
+
+\section*{Discussion and Results}
+
+Let's paste in the regression results here: 
+
+\begin{center}
+%\input{~/workshop_2022/Session6_Export_Results/R_code/latex_files/taxi_reg.tex}
+%\input{~/workshop_2022/Session6_Export_Results/python_code/latex_files/taxi_reg.tex}
+\input{~/workshop_2022/Session6_Export_Results/stata_code/latex_files/taxi_reg.tex}
+\end{center}
+
+Based on the OLS regression results from this `way too small' sample, it looks like the weather variable is significant.  
+\newpage
+
+Let's put an image of our graph here.  
+\begin{figure}[!htbp]
+\centering
+%\includegraphics[width=0.9\textwidth]{~/workshop_2022/Session6_Export_Results/R_code/latex_files/taxi_plot.pdf}
+%\includegraphics[width=0.9\textwidth]{~/workshop_2022/Session6_Export_Results/python_code/latex_files/taxi_plot.pdf}
+\includegraphics[width=0.9\textwidth]{~/workshop_2022/Session6_Export_Results/stata_code/latex_files/taxi_plot.pdf}
+\end{figure}
+
+\section*{Conclusion}
+
+We proved the obvious with a way too small datset!
+
+\begin{thebibliography}{9}
+
+\bibitem{Johnson et al. (2022)}Johnson, John and the RS Team, \emph{PhD Workshop Series}. 
+
+\end{thebibliography}
+
+\end{document}
