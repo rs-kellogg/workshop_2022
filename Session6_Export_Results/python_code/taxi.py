@@ -27,7 +27,7 @@
 
 # set working directory
 import os
-wd = "/home/<netid>/Session6_Exporting_Results/data"
+wd = "/home/<netid>/Session6_Export_Results/data"
 os.chdir(wd)
 
 # load other libraries
@@ -88,7 +88,7 @@ taxi.head()
 
 
 # navigate to output directory
-out_files = "/home/<netid>/Session6_Exporting_Results/python_code/latex_files"
+out_files = "/home/<netid>/Session6_Export_Results/python_code/latex_files"
 os.chdir(out_files)
 
 
