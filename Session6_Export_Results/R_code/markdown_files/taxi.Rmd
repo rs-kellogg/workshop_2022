@@ -39,7 +39,7 @@ You can embed an R code chunk in the space below.  Note that this line will show
 
 ```{r taxi}
 # set working environment
-setwd("~/workshop_2022/Session6_Exporting_Results/data")
+setwd("~/workshop_2022/Session6_Export_Results/data")
 
 # read in the dataframe
 taxi <- read.csv(file="taxi_backup.csv", header=TRUE, sep=",")
