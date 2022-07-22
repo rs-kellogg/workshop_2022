@@ -1,0 +1,45 @@
+% Are Taxi Rides Faster on Sunny Days
+% Your Name, Kellogg School of Management
+% 22 July 2022
+
+Let's read in our dataset and perform some basic 
+
+    global dirin = "~/workshop_2022/Session6_Exporting_Results/data"
+    import delimited using "$dirin/taxi_backup.csv"
+
+We still need to reformat the dataset here.
+
+    drop if trip_time_in_secs == 0
+    rename pickup_datetime pickup
+    rename dropoff_datetime dropoff
+    split pickup, p(" ")
+    rename pickup1 pickup_date
+    rename pickup2 pickup_time
+    split dropoff, p(" ")
+    rename dropoff1 dropoff_date
+    rename dropoff2 dropoff_time
+    gen trip_MPH = trip_distance/((trip_time_in_secs/60)/60)
+    drop if trip_MPH > 75
+    drop if passenger_count > 4
+    tempfile taxi
+    save taxi.dta, replace
+    clear
+    import delimited using "$dirin/weather.csv"
+    rename v1 pickup_date
+    rename v2 condition
+    merge 1:m pickup_date using taxi.dta
+
+The regression equation estimated by OLS is
+
+    xi: regress trip_MPH i.condition passenger_count    
+    
+![Taxi](taxi.png){width="4.5in"}
+
+The data can be  plotted using the commands
+
+    sepscatter trip_MPH passenger_count , sep(condition) mc(red blue) addplot(qfitci trip_MPH passenger_count if condition=="cloudy_rain", lc(red) || qfitci trip_MPH passenger_count if condition=="sunny", lc(blue)) legend(order(1 2))
+    graph export taxi.png, width(500) replace
+
+
+
+
