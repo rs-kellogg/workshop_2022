@@ -118,7 +118,7 @@ print(model.coef_)
 
 # run regression again
 est = sm.OLS(endog=y, exog=sm.add_constant(X)).fit()
-stargazer = Stargazer([est,est])
+stargazer = Stargazer([est])
 
 # save latex reg file
 tex_file = open( 'taxi_reg.tex', "w" ) 
