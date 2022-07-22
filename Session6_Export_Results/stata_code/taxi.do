@@ -29,8 +29,8 @@ clear
 *ssc install estout, replace
 
 * Set working directory
-global dirin = "~/workshop_2022/Session6_Exporting_Results/data"
-global dirout = "~/workshop_2022/Session6_Exporting_Results/stata_code/latex_files"
+global dirin = "~/workshop_2022/Session6_Export_Results/data"
+global dirout = "~/workshop_2022/Session6_Export_Results/stata_code/latex_files"
 
 
 *-----------------------
