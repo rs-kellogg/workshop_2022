@@ -26,7 +26,7 @@
 rm(list=ls())
 
 # set working directory
-setwd("~/workshop_20202/Session6_Exporting_Results/data")
+setwd("~/workshop_20202/Session6_Export_Results/data")
 
 # install packages
 #install.packages('stargazer')
@@ -75,7 +75,7 @@ taxi <- join(taxi, weather, by="pickup_date", type="left", match="all")
 # Summarize the variables
 summary(taxi)
 summary_taxi <- vtable(taxi,out='return') # create a summary dataframe
-setwd("~/workshop_2022/Session6_Exporting_Results/R_code/latex_files")
+setwd("~/workshop_2022/Session6_Export_Results/R_code/latex_files")
 vt(taxi,out='latex',file='taxi_summary.tex') # create a latex table file
 
 #####################################
