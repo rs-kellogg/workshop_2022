@@ -26,7 +26,7 @@
 rm(list=ls())
 
 # set working directory
-setwd("~/workshop_20202/Session6_Export_Results/data")
+setwd("~/workshop_2022/Session6_Export_Results/data")
 
 # install packages
 #install.packages('stargazer')
